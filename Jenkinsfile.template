@@ -1,11 +1,11 @@
 pipeline {
    agent {
     dockerfile {
-      dir 'jenkins'
-      args '--volume /var/run/docker.sock:/var/run/docker.sock'
-      label 'docker'
+        dir 'jenkins'
+        args '--volume /var/run/docker.sock:/var/run/docker.sock'
+        label 'docker'
+      }
     }
-  }
     parameters {
         string(defaultValue: '.', description: '', name: 'build_name')
         string(defaultValue: 'Dockerfile', description: '', name: 'dockerfile')
@@ -23,11 +23,6 @@ pipeline {
           cd ./client
           docker build -t chipprbots/${params.build_name} ${params.dockerfile}
         """
-
-
-
-
-
     }
 
     stage('Test image') {
@@ -41,6 +36,5 @@ pipeline {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        }
     }
 }
