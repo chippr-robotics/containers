@@ -11,6 +11,7 @@ pipeline {
         string(defaultValue: 'Dockerfile', description: '', name: 'dockerfile')
     }
 
+    stages {
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
         checkout scm
@@ -37,4 +38,5 @@ pipeline {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
     }
+   }
 }
