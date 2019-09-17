@@ -1,5 +1,11 @@
-node {
-
+pipeline {
+   agent {
+    dockerfile {
+      dir 'jenkins'
+      args '--volume /var/run/docker.sock:/var/run/docker.sock'
+      label 'docker'
+    }
+  }
     parameters {
         string(defaultValue: '.', description: '', name: 'build_name')
         string(defaultValue: 'Dockerfile', description: '', name: 'dockerfile')
