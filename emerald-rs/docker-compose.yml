@@ -1,0 +1,23 @@
+version: '3.2'
+services:
+  emerald-rs:
+    image: bcrd/emerald-rs:latest
+    container_name: emerald-rs
+    tty: true
+    ports:
+      - "127.0.0.1:1920:1920"
+   volumes:
+      - emeralddata:/root/.emerald
+
+
+volumes:
+  emeralddata:
+    driver: local
+    driver_opts:
+      type: bind
+      device: $PWD/.emerald-rs
+      o: bind
+
+
+
+

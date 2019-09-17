@@ -1,0 +1,22 @@
+version: '3.2'
+services:
+  zcash-tor:
+    image: bcrd/zcash-tor:v2.0.0
+    container_name: zcash-tor
+    tty: true
+    volumes:
+      - zcashtordata:/root/.zcash
+    ports:
+      - "127.0.0.1:18232:18232"
+
+
+volumes:
+  zcashtordata:
+    driver: local
+    driver_opts:
+      type: bind
+      device: $PWD/.zcash-tor
+      o: bind
+
+
+

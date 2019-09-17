@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  bitcoind:
+    image: bcrd/bitcoind-tor:latest
+    container_name: bitcoin
+    build: .
+    tty: true
+    volumes:
+      - bitcoinTordata:/root/.bitcoin
+    ports:
+      - "127.0.0.1:8332:8332"
+      - 9050:9050
+
+volumes:
+  bitcoinTordata:
+    driver: local
+    driver_opts:
+      type: bind
+      device: /freenas-Burns/blockchain/bitcoin-tor/.bitcoin
+      o: bind

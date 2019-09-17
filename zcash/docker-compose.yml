@@ -1,0 +1,9 @@
+version: '2'
+services:
+  zcash:
+    build: .
+    image: bcrd/zcash:latest
+    volumes:
+     - ./data:/root/.zcash/
+    command:
+     - zcashd --daemon 

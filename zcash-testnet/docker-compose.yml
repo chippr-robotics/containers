@@ -1,0 +1,36 @@
+version: '3.2'
+services:
+  zcash-A:
+    image: bcrd/zcash-testnet:v2.0.0
+    container_name: zcash-testnet-A
+    tty: true
+    volumes:
+      - zcashtestdataA:/root/.zcash
+    ports:
+      - "127.0.0.1:18232:18232"
+  
+  zcash-B:
+    image: bcrd/zcash-testnet:v2.0.0
+    container_name: zcash-testnet-B
+    tty: true
+    volumes:
+      - zcashtestdataB:/root/.zcash
+    ports:
+      - "127.0.0.1:18233:18232"
+
+
+volumes:
+  zcashtestdataA:
+    driver: local
+    driver_opts:
+      type: bind
+      device: $PWD/.zcash-test  # Change this to the right path!!!
+      o: bind
+ 
+  zcashtestdataB:
+    driver: local
+    driver_opts:
+      type: bind
+      device: $PWD/.zcash-test-B  # Change this to the right path!!!
+      o: bind
+
