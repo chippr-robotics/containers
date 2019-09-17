@@ -1,4 +1,9 @@
 node {
+
+    parameters {
+        string(defaultValue: '.', description: '', name: 'build_name')
+    }
+
     def app
 
     stage('Clone repository') {
