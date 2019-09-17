@@ -15,7 +15,7 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("chipprbots/${params.build_name}", "-f ${params.dockerfile}"))
+        app = docker.build("chipprbots/${params.build_name}", "-f ${params.dockerfile}")
     }
 
     stage('Test image') {
